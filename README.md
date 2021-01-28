@@ -1,3 +1,7 @@
+# [프론트엔드] 고양이 사진 검색 사이트
+
+## https://programmers.co.kr/skill_check_assignments/4
+
 1. HTML, CSS 관련
 
 - [x] 현재 HTML 코드가 전체적으로 <div> 로만 이루어져 있습니다. 이 마크업을 시맨틱한 방법으로 변경해야 합니다.
