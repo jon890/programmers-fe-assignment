@@ -1,0 +1,186 @@
+@font-face {
+  font-family: 'Goyang';
+  src: url('../fonts/Goyang.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body * {
+  font-family: Goyang;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.header,
+.main {
+  margin: 1.5em auto;
+  max-width: 1200px;
+  column-gap: 1.5em;
+}
+
+.header {
+  display: flex;
+}
+
+/* 검색 input */
+.header .SearchInput {
+  flex: 8;
+  font-size: 40px;
+  padding: 10px 15px;
+}
+
+/* 랜덤 고양이 버튼 */
+.header .RandomCatButton {
+  flex: 2;
+}
+
+.SearchResult {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  grid-gap: 10px;
+}
+
+.SearchResult img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.SearchResult .item {
+  background-color: #eee;
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+  cursor: pointer;
+}
+
+.SearchResult .item[data-tooltip-text]:hover {
+  position: relative;
+}
+
+.SearchResult .item[data-tooltip-text]:hover:after {
+  content: attr(data-tooltip-text);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-align: center;
+  z-index: 100;
+}
+
+.ImageInfo {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ImageInfo .title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ImageInfo .title,
+.ImageInfo .description {
+  padding: 5px;
+}
+
+.ImageInfo .content-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.ImageInfo .content-wrapper img {
+  width: 100%;
+}
+
+.ImageInfo .content-wrapper .close {
+  cursor: pointer;
+}
+
+/* 반응형 css */
+@media screen and (max-width: 992px) {
+  .SearchResult {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .SearchResult {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+
+  .ImageInfo .content-wrapper {
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    transform: translate(0%, -50%);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .SearchResult {
+    grid-template-columns: repeat(1, minmax(250px, 1fr));
+  }
+}
+
+/* loading ui */
+.loading-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -100;
+  width: 100vw;
+  height: 100vh;
+
+  /* 중앙 정렬 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* dark mode 처리 */
+/* @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #000;
+      color: white;
+    }
+  } */
