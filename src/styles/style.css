@@ -40,6 +40,7 @@ body * {
 /* 랜덤 고양이 버튼 */
 .header .RandomCatButton {
   flex: 2;
+  font-size: 25px;
 }
 
 .SearchResult {
@@ -111,7 +112,8 @@ body * {
 }
 
 .ImageInfo .content-wrapper img {
-  width: 100%;
+  /* width: 100%; */
+  max-height: 50vh;
 }
 
 .ImageInfo .content-wrapper .close {
@@ -177,10 +179,64 @@ body * {
   }
 }
 
+/* 테마 버튼 */
+.ThemeButton {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+
+  position: fixed;
+  left: 78px;
+  top: 19px;
+  display: inline-block;
+  height: 53px;
+
+  background-image: url(https://s.pstatic.net/static/www/img/uit/2020/sp_main_1f05c0.png);
+  background-repeat: no-repeat;
+  background-size: 440px 410px;
+
+  vertical-align: top;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.ThemeButton[data-dark='true'] {
+  width: 148px;
+  background-color: #000;
+  background-position: -270px 0;
+}
+
+.ThemeButton[data-light='true'] {
+  width: 136px;
+  background-position: -270px -55px;
+}
+
 /* dark mode 처리 */
 /* @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #000;
-      color: white;
-    }
-  } */
+  body,
+  div,
+  .SearchInput,
+  .RandomCatButton {
+    background-color: #000;
+    color: white;
+  }
+
+  .SearchInput,
+  .RandomCatButton {
+    border: 1px solid darkgray;
+  }
+} */
+
+html[data-dark='true'] body,
+html[data-dark='true'] div,
+html[data-dark='true'] .SearchInput,
+html[data-dark='true'] .RandomCatButton {
+  background-color: #000;
+  color: white;
+}
+
+html[data-dark='true'] .SearchInput,
+html[data-dark='true'] .RandomCatButton {
+  border: 1px solid darkgray;
+}

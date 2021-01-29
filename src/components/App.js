@@ -3,7 +3,9 @@ import RandomCatButton from './RandomCatButton.js';
 import SearchResult from './SearchResult.js';
 import ImageInfo from './ImageInfo.js';
 import Loading from './Loading.js';
+import ThemeButton from './ThemeButton.js';
 import api from '../api.js';
+import Const from '../utils/const.js';
 
 export default class App {
   $target = null;
@@ -63,7 +65,7 @@ export default class App {
           loading: true,
         });
         const { id } = image;
-        const catDetailsData = api.fetchCatDetails(id).then(({ data }) => {
+        api.fetchCatDetails(id).then(({ data }) => {
           this.imageInfo.setState({
             visible: true,
             image: data,
@@ -88,6 +90,10 @@ export default class App {
       data: {
         loading: false,
       },
+    });
+
+    this.themeButton = new ThemeButton({
+      $target,
     });
   }
 
